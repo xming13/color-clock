@@ -1,0 +1,44 @@
+html,
+body {
+    margin: 0 auto;
+    height: 100%;
+}
+
+.left {
+    position: absolute;
+    left: 0;
+    height: 100%;
+}
+
+.right {
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+
+.time {
+    width: 80px;
+    height: 8.33%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.time:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+#current-time {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 60px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
