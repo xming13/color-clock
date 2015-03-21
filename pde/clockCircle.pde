@@ -16,8 +16,8 @@ void draw() {
     background(0,0,0,0);
 
     // draw circle base
-    fill(0.65);
-    noStroke(0);
+    fill(24/360, 0.8, 0.8);
+    noStroke();
     ellipse(centerX, centerY, width, height);
 
     // draw clock
