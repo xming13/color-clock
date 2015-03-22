@@ -9,5 +9,37 @@
 <canvas id="canvas2" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockCircle.pde"></canvas>
 <canvas id="canvas3" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockPokemon.pde"></canvas>
 <canvas id="canvas4" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockJapan.pde"></canvas>
+
+<script>
+    var now = new Date();
+    console.log('getTimezoneOffset(): ' + now.getTimezoneOffset());
+
+    var currentGMT = now.getTimezoneOffset() / -60;
+    console.log('You are currently in timezone GMT' + (currentGMT >= 0 ? ('+' + currentGMT) : currentGMT));
+    console.log('Your local time is ' + now.toLocaleString());
+
+    var millisecondsGMT0 = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
+
+    var countries = [
+        {
+            name: 'Japan',
+            GMT: 9
+        },
+        {
+            name: 'Singapore',
+            GMT: 8
+        },
+        {
+            name: 'New York',
+            GMT: -4
+        }
+    ];
+
+    for (var i = 0; i < countries.length; i++) {
+        var country = countries[i];
+        var millisecondsCountry = millisecondsGMT0 + country.GMT * 60 * 60 * 1000;
+        console.log('current time at ' + country.name + ': ' + new Date(millisecondsCountry).toLocaleString());
+    }
+</script>
 </body>
 </html>
