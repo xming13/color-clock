@@ -15,18 +15,50 @@ void draw() {
     // set transparent background
     background(0,0,0,0);
 
-    // draw circle base
-    fill(24/360, 0.8, 0.8);
-    noStroke();
-    ellipse(centerX, centerY, width, height);
-
     // draw clock
-    CColor clockColor = new CColor(second() / 59, minute() / 59, hour() / 23);
+    noStroke();
+    for (int i = 0; i <= 11; i++) {
+        drawPartClock(i);
+    }
+
+    stroke(0);
+    drawClockArms();
+}
+
+// @param partNumber specify which part of the clock. zero-indexed: [0, 11]
+function drawPartClock(partNumber) {
+    int _second = second() - partNumber;
+    int _minute = minute();
+    int _hour = hour();
+
+    if (_second < 0) {
+        _second += 60;
+        _minute--;
+
+        if (_minute < 0) {
+            _minute += 60;
+            _hour--;
+
+            if (_hour < 0) {
+                _hour = 23;
+            }
+        }
+    }
+
+    // set hue to [0, 1]
+    float hue = _second / 59;
+
+    // set saturation to [0.5, 1]
+    float saturation = _minute / 59 / 2 + 0.5;
+
+    // set lightness to [0.25, 0.75]
+    float lightness = _hour / 23 / 2 + 0.25;
+
+    CColor clockColor = new CColor(hue, saturation, lightness);
     float[] hsv = clockColor.hsv();
     fill(hsv[0], hsv[1], hsv[2]);
-    stroke(0, 0, clockColor.getOppositeBrightness());
-    ellipse(centerX, centerY, width - 2 * padding, height - 2 * padding);
 
-    drawClockArms();
+    // - PI / 2 to move it back by one quarter
+    arc(centerX, centerY, width, height, partNumber * PI / 6 - PI / 2, (partNumber + 1) * PI / 6 - PI / 2);
 }
 
