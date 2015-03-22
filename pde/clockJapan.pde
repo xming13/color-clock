@@ -1,4 +1,4 @@
-/* @pjs preload="img/pokeball.png,img/pikachu.png,img/charmander.png",img/squirtle.png,img/bulbasaur.png; */
+/* @pjs preload="img/pokeball.png,img/pikachu.png,img/charmander.png,img/squirtle.png,img/bulbasaur.png"; */
 PImage imgPokeball, imgPikachu, imgCharmander, imgSquirtle, imgBulbasaur;
 int centerX, centerY;
 int maxArmLength;
@@ -30,6 +30,6 @@ void draw() {
     // set the color of the clock arm
     stroke(0, 0, clockColor.getOppositeBrightness());
 
-    drawClockArms();
+    drawClockArms(getCountryTime('Japan'));
 }
 

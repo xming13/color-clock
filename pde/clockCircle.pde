@@ -60,5 +60,12 @@ function drawPartClock(partNumber) {
 
     // - 7 * PI / 12 to move it back by one quarter and a half of twelfth
     arc(centerX, centerY, width, height, partNumber * PI / 6 - 7 * PI / 12, (partNumber + 1) * PI / 6 - 7 * PI / 12);
+
+    // draw point
+    int angle = TWO_PI / 12 * partNumber;
+    float x = width / 2 + maxArmLength * sin(angle);
+    float y = height / 2 - maxArmLength * cos(angle);
+    fill(hsv[0], 1, 1);
+    ellipse(x, y, 10, 10);
 }
 

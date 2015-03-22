@@ -55,78 +55,30 @@ void draw() {
     imgBulbasaur = loadImage('img/bulbasaur.png');
     imgBulbasaur.resize(sizeImage, 0);
 
-    // draw the point
-    int angle = TWO_PI / 12;
-    float sinRes = abs(maxArmLength * sin(angle));
-    float cosRes = abs(maxArmLength * cos(angle));
+    // draw the points
+    for (int i = 2; i <= 13; i++) {
+        int angle = TWO_PI / 12 * i;
+        float x = width / 2 + maxArmLength * sin(angle);
+        float y = height / 2 - maxArmLength * cos(angle);
 
-    // point 11
-    float x = width / 2 - sinRes;
-    float y = height / 2 - cosRes;
-    fill(0.167, 1, 1);
-    ellipse(x, y, 10, 10);
+        switch (i) {
+            case 2: fill(0, 1, 1); break;
+            case 3: image(imgCharmander, x, y); continue;
+            case 5: fill(0.66, 1, 1); break;
+            case 6: image(imgSquirtle, x, y); continue;
+            case 8: fill(0.33, 1, 1); break;
+            case 9: image(imgBulbasaur, x, y); continue;
+            case 11: fill(0.167, 1, 1); break;
+            case 12: image(imgPikachu, x, y); continue;
+            default: break;
+        }
 
-    // point 12
-    x = width / 2;
-    y = height / 2 - maxArmLength;
-    image(imgPikachu, x, y);
-
-    // point 1
-    x = width / 2 + sinRes;
-    y = height / 2 - cosRes;
-    ellipse(x, y, 10, 10);
-
-    // point 2
-    x = width / 2 + cosRes;
-    y = height / 2 - sinRes;
-    fill(0, 1, 1);
-    ellipse(x, y, 10, 10);
-
-    // point 3
-    x = width / 2 + maxArmLength;
-    y = height / 2;
-    image(imgCharmander, x, y);
-
-    // point 4
-    x = width / 2 + cosRes;
-    y = height / 2 + sinRes;
-    ellipse(x, y, 10, 10);
-
-    // point 5
-    x = width / 2 + sinRes;
-    y = height / 2 + cosRes;
-    fill(0.66, 1, 1);
-    ellipse(x, y, 10, 10);
-
-    // point 6
-    x = width / 2;
-    y = height / 2 + maxArmLength;
-    image(imgSquirtle, x, y);
-
-    // point 7
-    x = width / 2 - sinRes;
-    y = height / 2 + cosRes;
-    ellipse(x, y, 10, 10);
-
-    // point 8
-    x = width / 2 - cosRes;
-    y = height / 2 - sinRes;
-    fill(0.33, 1, 1);
-    ellipse(x, y, 10, 10);
-
-    // point 9
-    x = width / 2 - maxArmLength;
-    y = height / 2;
-    image(imgBulbasaur, x, y);
-
-    // point 10
-    x = width / 2 - cosRes;
-    y = height / 2 + sinRes;
-    ellipse(x, y, 10, 10);
+        ellipse(x, y, 10, 10);
+    }
 
     // set the color of the clock arm
     stroke(0);
 
-    drawClockArms();
+    drawClockArms(getCountryTime('Japan'));
 }
 

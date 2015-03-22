@@ -24,6 +24,6 @@ void draw() {
     // set the color of the clock arm
     stroke(0, 0, clockColor.getOppositeBrightness());
 
-    drawClockArms();
+    drawClockArms(getCountryTime('London'));
 }
 

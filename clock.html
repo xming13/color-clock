@@ -20,25 +20,17 @@
 
     var millisecondsGMT0 = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
 
-    var countries = [
-        {
-            name: 'Japan',
-            GMT: 9
-        },
-        {
-            name: 'Singapore',
-            GMT: 8
-        },
-        {
-            name: 'New York',
-            GMT: -4
-        }
-    ];
+    var countryTimezone = {
+        'New York': -4,
+        'London': 0,
+        'Singapore': 8,
+        'Japan': 9,
+        'Sydney': 11
+    };
 
-    for (var i = 0; i < countries.length; i++) {
-        var country = countries[i];
-        var millisecondsCountry = millisecondsGMT0 + country.GMT * 60 * 60 * 1000;
-        console.log('current time at ' + country.name + ': ' + new Date(millisecondsCountry).toLocaleString());
+    for (var key in countryTimezone) {
+        var millisecondsCountry = millisecondsGMT0 + countryTimezone[key] * 60 * 60 * 1000;
+        console.log('current time at ' + key + ': ' + new Date(millisecondsCountry).toLocaleString());
     }
 </script>
 </body>
