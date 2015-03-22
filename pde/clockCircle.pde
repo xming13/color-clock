@@ -58,7 +58,7 @@ function drawPartClock(partNumber) {
     float[] hsv = clockColor.hsv();
     fill(hsv[0], hsv[1], hsv[2]);
 
-    // - PI / 2 to move it back by one quarter
-    arc(centerX, centerY, width, height, partNumber * PI / 6 - PI / 2, (partNumber + 1) * PI / 6 - PI / 2);
+    // - 7 * PI / 12 to move it back by one quarter and a half of twelfth
+    arc(centerX, centerY, width, height, partNumber * PI / 6 - 7 * PI / 12, (partNumber + 1) * PI / 6 - 7 * PI / 12);
 }
 
