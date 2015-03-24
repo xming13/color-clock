@@ -15,7 +15,7 @@ void setup() {
 
 void draw() {
     // set background
-    background(1);
+    background(24/360, 0.8, 0.8);
 
     // draw clock
     CColor clockColor = new CColor(1, 1, 1);

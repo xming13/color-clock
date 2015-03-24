@@ -5,10 +5,13 @@
     <script src="js/processing.min.js"></script>
 </head>
 <body>
-<canvas id="canvas1" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockSquare.pde"></canvas>
-<canvas id="canvas2" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockCircle.pde"></canvas>
-<canvas id="canvas3" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockPokemon.pde"></canvas>
-<canvas id="canvas4" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockJapan.pde"></canvas>
+<div id="container">
+    <canvas id="canvas1" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockSquare.pde"></canvas>
+    <canvas id="canvas2" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockCircle.pde"></canvas>
+    <canvas id="canvas3" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockCircle2.pde"></canvas>
+    <canvas id="canvas4" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockPokemon.pde"></canvas>
+    <canvas id="canvas5" data-processing-sources="pde/cColor.pde pde/clockUtils.pde pde/clockJapan.pde"></canvas>
+</div>
 
 <script>
     var now = new Date();
@@ -32,6 +35,20 @@
         var millisecondsCountry = millisecondsGMT0 + countryTimezone[key] * 60 * 60 * 1000;
         console.log('current time at ' + key + ': ' + new Date(millisecondsCountry).toLocaleString());
     }
+</script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var container = document.querySelector('#container');
+
+        var msnry = new Masonry(container, {
+            itemSelector: 'canvas'
+        });
+
+        setTimeout(function() {
+            msnry.layout();
+        }, 1000);
+    });
 </script>
 </body>
 </html>
