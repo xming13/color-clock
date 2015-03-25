@@ -48,7 +48,7 @@ function drawPartClock(partNumber) {
     }
 
     // set hue to [0, 1]
-    float hue = (_second + _millisecond % 1000 / 999) / 60;
+    float hue = (_second + _millisecond / 999) / 60;
 
     // set saturation to [0.5, 1]
     float saturation = _minute / 59 / 2 + 0.5;
